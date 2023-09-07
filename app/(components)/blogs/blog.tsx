@@ -1,14 +1,20 @@
 'use client'
-import { Card, CardHeader, CardBody, Avatar, Button, Image, Chip } from "@nextui-org/react";
+import { Card, CardBody, Avatar, Image } from "@nextui-org/react";
 import Link from "next/link";
 import React from 'react'
-
-function Blog({data}:{data:Object}) {
+interface Data{
+    map(arg0: (data: Data, index: Number) => React.JSX.Element): unknown;
+    _id:String,
+    created_by: String,
+    title: String,
+    description: String,
+}
+function Blog({data}:{data:Data}) {
 
     return (
         <>
-        {data.map((data:Object, index:String)=> 
-            <Card isBlurred key={index} as={Link} href={`blogs/${data._id}`}
+        {data.map((data:Data, index)=> 
+            <Card isBlurred key={data._id[1]} as={Link} href={`blogs/${data._id}`}
                 className="border-none my-5 mx-auto bg-background/60 dark:bg-default-100/50 max-w-3xl dark:bg-gray-200"
                 shadow="sm">
                 <CardBody>

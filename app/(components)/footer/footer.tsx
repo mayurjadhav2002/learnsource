@@ -7,7 +7,7 @@ function Footer() {
   
     {/* This example requires Tailwind CSS v2.0+
      */}
-    <footer className="bg-white border-t-2 mt-10" aria-labelledby="footer-heading">
+    <footer className="bg-white border-t-2 mt-10 z-50" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>

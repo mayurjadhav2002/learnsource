@@ -7,10 +7,12 @@ import {
 import Link from "next/link";
 import { RiArrowDropDownLine } from 'react-icons/ri'
 import { TbUsersGroup } from 'react-icons/tb'
-import {FcFeedback, FcBusinessContact} from 'react-icons/fc'
+import { FcFeedback, FcBusinessContact } from 'react-icons/fc'
+import { useUserContext } from "@/app/auth/userContext/userContext";
 export default function Nav() {
   const iconClasses = "text-xl text-default-500 pointer-events-none flex-shrink-0";
-
+  const { userSession, updateUserState } = useUserContext();
+  console.log(userSession)
   return (
     <>
 
@@ -53,7 +55,6 @@ export default function Nav() {
 
               <DropdownMenu
                 aria-label="Action event example"
-                onAction={(key) => alert(key)}
               >
                 <DropdownSection title="about qbytespace" showDivider>
 
@@ -84,14 +85,12 @@ export default function Nav() {
                 <DropdownSection title="policies">
 
                   <DropdownItem
-                    key="new"
                   >
                     Disclaimer
                   </DropdownItem>
 
 
-                  <DropdownItem
-                    key="new"
+                  <DropdownItem as={Link} href={'/terms-and-conditions'}
                   >
                     Terms and Conditions
                   </DropdownItem>
@@ -99,7 +98,6 @@ export default function Nav() {
 
 
                   <DropdownItem
-                    key="new"
                   >
                     Privacy policy
                   </DropdownItem>
@@ -113,15 +111,18 @@ export default function Nav() {
           </NavbarItem>
 
         </NavbarContent>
+
         <NavbarContent justify="end">
-          <NavbarItem className="hidden lg:flex">
-            <Link href="/">Login</Link>
+          {userSession===null ? <> <NavbarItem className="hidden lg:flex">
+            <Link href="/auth">Login</Link>
           </NavbarItem>
-          <NavbarItem>
-            <Button color="primary" href="/" variant="flat">
-              Sign Up
-            </Button>
-          </NavbarItem>
+            <NavbarItem>
+              <Button color="primary" href="/" variant="flat">
+                Sign Up
+              </Button>
+            </NavbarItem></> :
+ userSession.username         }
+
 
         </NavbarContent>
       </Navbar>

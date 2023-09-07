@@ -1,7 +1,6 @@
 'use client'
 import { Image } from '@nextui-org/react'
 import React, { Fragment } from 'react'
-import Sidebar from '../Sidebar';
 import './style.css'
 export default function page({ params }: { params: { id: string } }) {
   const blog = {
