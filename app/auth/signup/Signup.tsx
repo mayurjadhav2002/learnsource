@@ -27,7 +27,7 @@ function SignUp() {
                 setLoading(false)
             }
         } catch (error) {
-            
+            throw new Error("Error")
         }
     }
     return (

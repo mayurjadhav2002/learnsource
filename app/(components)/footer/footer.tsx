@@ -16,9 +16,10 @@ function Footer() {
           <div className="space-y-8 xl:col-span-1">
             <Link
               href="/"
-              className="text-lg font-bold tracking-tighter text-blue-600 transition duration-500 ease-in-out transform tracking-relaxed lg:pr-8"
+              className="text-lg font-bold tracking-tighter  mx-auto
+               transition duration-500 ease-in-out transform tracking-relaxed lg:pr-8"
             >
-              <img src="https://i.postimg.cc/xjsc22Wp/logo1.png"  alt="" />
+          <h1 className="text-3xl"> <span className="text-blue-600 text-4xl">Q</span><span className="font-light">Bytȅ</span><span className="font-thin">Space</span></h1>
              
            </Link>
            

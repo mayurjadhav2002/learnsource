@@ -1,5 +1,5 @@
 'use client'
-import React from "react";
+import React, { useContext } from "react";
 import {
   Navbar, NavbarBrand, NavbarContent, NavbarItem,
   Button, Image, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, DropdownSection
@@ -11,19 +11,15 @@ import { FcFeedback, FcBusinessContact } from 'react-icons/fc'
 import { useUserContext } from "@/app/auth/userContext/userContext";
 export default function Nav() {
   const iconClasses = "text-xl text-default-500 pointer-events-none flex-shrink-0";
-  const { userSession, updateUserState } = useUserContext();
-  console.log(userSession)
+  const { user, logout } = useUserContext();
   return (
     <>
 
 
       <Navbar isBordered maxWidth="2xl">
         <NavbarBrand className="left-0">
-          <Image src="https://i.postimg.cc/xjsc22Wp/logo1.png"
-            width={150}
-
-          />
-        </NavbarBrand>
+          <h1 className="text-3xl"> <span className="text-blue-600 text-4xl">Q</span><span className="font-light">Bytȅ</span><span className="font-thin">Space</span></h1>
+        </NavbarBrand> 
         <NavbarContent className="hidden sm:flex gap-5 text-lg" justify="center">
           <NavbarItem>
             <Link href="/blogs">
@@ -85,6 +81,7 @@ export default function Nav() {
                 <DropdownSection title="policies">
 
                   <DropdownItem
+                  as={Link} href={'/disclaimer'}
                   >
                     Disclaimer
                   </DropdownItem>
@@ -113,17 +110,22 @@ export default function Nav() {
         </NavbarContent>
 
         <NavbarContent justify="end">
-          {userSession===null ? <> <NavbarItem className="hidden lg:flex">
+
+          <>
+             {user === null ? <> <NavbarItem className="hidden lg:flex">
             <Link href="/auth">Login</Link>
           </NavbarItem>
             <NavbarItem>
-              <Button color="primary" href="/" variant="flat">
+              <Button as={Link} href={"/auth/signup"} color="primary" variant="flat">
                 Sign Up
               </Button>
             </NavbarItem></> :
- userSession.username         }
+            user.name}
+          
+          </>
+       
 
-
+        
         </NavbarContent>
       </Navbar>
     </>

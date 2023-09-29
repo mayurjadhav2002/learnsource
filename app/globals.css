@@ -31,16 +31,6 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFF7F3", en
 
 
 
-.container {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-  }
   
   .item {
     width: 100px;
@@ -105,3 +95,59 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFF7F3", en
     50% {transform: translate(100px, -100px)} 
     75% {transform: translate(0, -100px)} 
   }
+
+@tailwind base;
+@layer base {
+    h1 {
+      @apply text-4xl font-extrabold my-3;
+    
+    }
+    h2 { 
+      @apply text-3xl font-bold my-3;
+    }
+    h3 { 
+      @apply text-2xl font-bold my-3;
+    }
+    h4 {
+        @apply text-xl font-bold my-3;
+      }
+      h5 {
+        @apply text-lg font-bold my-3;
+      }
+      
+ img{
+    @apply rounded-lg;
+ }
+ p{
+    @apply text-lg text-justify;
+ }
+ figcaption{
+    @apply text-center;
+ }
+ figure{
+    @apply py-2;
+ }
+  }
+@tailwind components;
+
+@tailwind utilities;
+
+
+
+
+
+.custom-loader {
+  width:100px;
+  height:100px;
+  border:4px solid #343AF4;
+  background:
+    radial-gradient(farthest-side,#0000 calc(100% - 6px),#343AF4 calc(100% - 4px) 98%,#0000),
+    radial-gradient(farthest-side,#0000 calc(100% - 6px),#6065ee calc(100% - 4px) 98%,#0000);
+  background-size: 46px 46px;
+  background-position: 0 0,24px 24px;
+  animation: h4 1s infinite;
+}
+
+@keyframes h4{
+  100% {background-position: -46px 0px,24px 70px}
+}

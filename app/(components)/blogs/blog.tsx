@@ -14,11 +14,11 @@ function Blog({data}:{data:Data}) {
     return (
         <>
         {data.map((data:Data, index)=> 
-            <Card isBlurred key={data._id[1]} as={Link} href={`blogs/${data._id}`}
-                className="border-none my-5 mx-auto bg-background/60 dark:bg-default-100/50 max-w-3xl dark:bg-gray-200"
+            <Card  key={data._id[1]} as={Link} href={`blogs/${data._id}`}
+                className="border-none my-5 mx-auto dark:bg-default-100/50 max-w-3xl dark:bg-gray-200"
                 shadow="sm">
                 <CardBody>
-                    <div className="grid grid-cols-6 gap-1 items-center ">
+                    <div className="grid grid-cols-2 lg:grid-cols-6 gap-1 items-center ">
                         <div className="col-span-4">
                             <div className="flex gap-2">
                                 <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" />
@@ -32,8 +32,10 @@ function Blog({data}:{data:Data}) {
                                 <p className="text-sm mt-1">{data.description}</p>
                             </div>
                         </div>
-                        <div className="bg-red-50 col-span-2">
-                            <Image src="https://img-c.udemycdn.com/course/240x135/4789870_53df_2.jpg" />
+                        <div className="col-span-3 mx-auto lg:mt-0 mt-4 lg:col-span-2">
+                            <Image src="https://img-c.udemycdn.com/course/240x135/4789870_53df_2.jpg"
+                            className="object-cover mx-auto"
+                            />
                         </div>
                     </div>
                 </CardBody>

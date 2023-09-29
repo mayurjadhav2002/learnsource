@@ -7,7 +7,7 @@ import Nav from './(components)/Navbar/page'
 
 import 'vuesax/dist/vuesax.css'
 import Footer from './(components)/footer/footer'
-import { UserSessionProvider } from './auth/userContext/userContext'
+import { UserContextProvider } from './auth/userContext/userContext'  // Import your UserSessionProvider
 
 export default function RootLayout({
 
@@ -20,13 +20,13 @@ export default function RootLayout({
     <html lang="en">
       <body>
       <NextUIProvider>
-      <UserSessionProvider>
+      <UserContextProvider>
 
       <Nav />
 
             {children}
        <Footer />
-       </UserSessionProvider>
+       </UserContextProvider>
 
       </NextUIProvider>
       </body>

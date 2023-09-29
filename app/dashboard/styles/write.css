@@ -90,3 +90,61 @@ input[type='file'] {
 .custom-file-input:active::before {
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
+
+
+
+.my-rte-container {
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Customize the editor content */
+.ql-editor {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  min-height: 200px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Style the toolbar */
+.ql-toolbar {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+/* Style the buttons */
+.ql-toolbar button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+/* Customize the active button styles */
+.ql-toolbar button:hover {
+  background-color: #f0f0f0;
+}
+
+/* Style the input field in the toolbar (for links) */
+.ql-toolbar input[type="text"] {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 3px;
+  margin-right: 5px;
+}
+
+/* Customize the select dropdown in the toolbar (for font size) */
+.ql-toolbar select {
+  border: none;
+  background-color: transparent;
+  margin-right: 5px;
+}

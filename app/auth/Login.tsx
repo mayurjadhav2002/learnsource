@@ -1,8 +1,35 @@
 'use client'
 import Link from 'next/link'
-import React, { useState } from 'react'
-
+import React, { useContext, useState } from 'react'
+import  { useUserContext } from './userContext/userContext';
+ './userContext/userContext';
 function Login() {
+    const {login} = useUserContext();
+
+    const [email, setemail] = useState('')
+    const [password, setpassword] = useState('')
+    const handleSubmit = async () => {
+        fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/login`, {
+            method: 'POST',
+            body: JSON.stringify({
+                email: email,
+                password: password
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+            .then((response) => response.json())
+            .then(async(data) => {
+                console.log(data);
+                // Handle data
+                await login(data.data);
+                window.location.href = `${process.env.NEXT_PUBLIC_APP_URL}/dashboard`
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
+    }
     const githubLogin = () => {
         window.location.href = `https://github.com/login/oauth/authorize?client=${process.env.NEXT_PUBLIC_GH_CLIENT_ID}`
     }
@@ -55,12 +82,16 @@ function Login() {
                     </div>
                     <div>
                         <label className="text-sm font-medium leading-none text-gray-800">Email</label>
-                        <input aria-label="enter email adress" role="input" type="email" className="bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2" />
+                        <input aria-label="enter email adress"
+                            onChange={e => setemail(e.target.value)}
+                            role="input" type="email" className="bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2" />
                     </div>
                     <div className="mt-6  w-full">
                         <label className="text-sm font-medium leading-none text-gray-800">Password</label>
                         <div className="relative flex items-center justify-center">
-                            <input aria-label="enter Password" role="input" type="password" className="bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2" />
+                            <input aria-label="enter Password"
+                                onChange={e => setpassword(e.target.value)}
+                                role="input" type="password" className="bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2" />
                             <div className="absolute right-0 mt-2 mr-3 cursor-pointer">
                                 <svg width={16} height={16} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -72,7 +103,7 @@ function Login() {
                         </div>
                     </div>
                     <div className="mt-8">
-                        <button role="button" aria-label="create my account" className="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-4 w-full">
+                        <button role="button" onClick={handleSubmit} aria-label="create my account" className="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-4 w-full">
                             Let's go 🚀
                         </button>
                     </div>

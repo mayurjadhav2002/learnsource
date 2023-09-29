@@ -13,7 +13,7 @@ const iconClasses = "w-5 h-5"
         {title: 'Followers', href:'/followers', icon: <SlUserFollow className={iconClasses}/>},
     ]
      const UserMenu = [
-        {title: 'Profile', href:'/', icon: <Image src={'https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png'} className='w-5 h-5 rounded' /> },
+        {title: 'Profile', href:'/dashboard/profile', icon: <Image src={'https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png'} className='w-5 h-5 rounded' /> },
         {title: 'Settings', href:'/', icon: <FcSettings className={iconClasses}/>},
         {title: 'Log out', href: '/', icon: <RiLogoutBoxRLine className={iconClasses}/>}
      ]

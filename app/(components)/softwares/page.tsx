@@ -1,8 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import PaginationUI from '../blogs/pagination'
-import Sidebar from '../blogs/Sidebar'
-import Link from 'next/link'
+
 import  useSWR from 'swr'
 import SoftwareCards from './SoftwareCards'
 import Loading from '@/app/loading'
@@ -16,7 +15,7 @@ function page() {
   
    const { data, error } = useSWR(apiUrl, fetcher, { revalidateOnFocus: false });
    if (error) return <div>Failed to load</div>
-   if (!data) return <div className='text-center relative h-72'> <Loading/> </div>
+   if (!data) return  <Loading/> 
  
    console.log(data)
    console.log(apiUrl)

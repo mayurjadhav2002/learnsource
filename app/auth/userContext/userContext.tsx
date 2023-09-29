@@ -1,26 +1,42 @@
-import React, { createContext, useContext, useState } from 'react';
+// userContext.js
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
-const userContext = createContext();
+const UserContext = createContext();
 
-const UserSessionProvider = ({children}:{children: any}) =>{
-    const [userSession, setUserSession] = useState(null)
-
-    const updateUserState = (sessionData: React.SetStateAction<null>) =>{
-setUserSession(sessionData)
-    } 
-    return (
-        <userContext.Provider value={{userSession, updateUserState}}>
-            {children}
-        </userContext.Provider>
-    )
+export function useUserContext() {
+  return useContext(UserContext);
 }
 
-const useUserContext = () =>{
-    const context = useContext(userContext);
-    if(context===undefined){
-        console.log("Error")
+export function UserContextProvider({ children }) {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false)
+  useEffect(() => {
+    setLoading(true)
+    // Check local storage for user data on component mount
+    const storedUser = localStorage.getItem('user');
+
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+      setLoading(false)
     }
-    return context;
-}
+    setLoading(false)
+  }, []);
 
-export {UserSessionProvider, useUserContext };
+  const login = (userData: React.SetStateAction<null>) => {
+    // Save user data to local storage on login
+    localStorage.setItem('user', JSON.stringify(userData));
+    setUser(userData);
+  };
+
+  const logout = () => {
+    // Remove user data from local storage on logout
+    localStorage.removeItem('user');
+    setUser(null);
+  };
+
+  return (
+    <UserContext.Provider value={{ user,loading, login, logout }}>
+      {children}
+    </UserContext.Provider>
+  );
+}
