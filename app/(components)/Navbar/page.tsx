@@ -11,7 +11,7 @@ import { FcFeedback, FcBusinessContact } from 'react-icons/fc'
 import { useUserContext } from "@/app/auth/userContext/userContext";
 export default function Nav() {
   const iconClasses = "text-xl text-default-500 pointer-events-none flex-shrink-0";
-  const { user, logout } = useUserContext();
+  const  {user}  = useUserContext();
   return (
     <>
 
