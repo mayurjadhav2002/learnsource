@@ -9,7 +9,7 @@ import Ads from '../(more)/Ads/Ads'
 
 const fetcher = (url: URL) => fetch(url, { method: 'get' }).then((res) => res.json());
 
-function page() {
+function Page() {
   const [pageIndex, setPageIndex] = useState(1);
   const apiUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blog/get-all-blogs?page=${pageIndex}`;
   const { data, error } = useSWR(apiUrl, fetcher, { revalidateOnFocus: false });

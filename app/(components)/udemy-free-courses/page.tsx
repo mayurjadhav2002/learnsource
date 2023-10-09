@@ -6,7 +6,7 @@ import Loading from '@/app/loading';
  
 const fetcher = (url: RequestInfo | URL) => fetch(url).then((res) => res.json());
  
-function page() {
+function Page() {
     const { data, error } = useSWR("https://flask-udemy-coupon-code.mayurjadhav.repl.co/", fetcher, { revalidateOnFocus: false }    )
  
     if (error) return <div>Failed to load</div>
@@ -37,6 +37,6 @@ function page() {
     )
 }
 
-export default page
+export default Page
 
 

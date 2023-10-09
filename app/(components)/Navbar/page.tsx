@@ -9,7 +9,6 @@ import Link from "next/link";
 import { RiArrowDropDownLine, RiMenu5Fill } from 'react-icons/ri'
 import { TbUsersGroup } from 'react-icons/tb'
 import { FcFeedback, FcBusinessContact } from 'react-icons/fc'
-import { useUserContext } from "@/app/auth/userContext/userContext";
 import GitHubButton from 'react-github-btn'
 
 export default function Nav() {
@@ -18,7 +17,6 @@ export default function Nav() {
     setOpenOffCanvas(!openOffCanvas)
   }
   const iconClasses = "text-xl text-default-500 pointer-events-none flex-shrink-0";
-  const { user } = useUserContext();
   return (
     <>
 
@@ -90,13 +88,16 @@ export default function Nav() {
                 <DropdownSection title="policies">
 
                   <DropdownItem
-                    as={Link} href={'/disclaimer'}
+                
                   >
+                    <Link href={'/disclaimer'}>
+                    
                     Disclaimer
+                    </Link>
                   </DropdownItem>
 
 
-                  <DropdownItem as={Link} href={'/terms-and-conditions'}
+                  <DropdownItem as={Link} href='/terms-and-conditions'
                   >
                     Terms and Conditions
                   </DropdownItem>
@@ -177,11 +178,11 @@ export default function Nav() {
 
         {/* Policies */}
         <DropdownSection title="policies">
-          <DropdownItem as={Link} href={'/disclaimer'}>
+          <DropdownItem   key="new" as={Link} href='/disclaimer'>
             Disclaimer
           </DropdownItem>
 
-          <DropdownItem as={Link} href={'/terms-and-conditions'}>
+          <DropdownItem   key="new" as={Link} href='/terms-and-conditions'>
             Terms and Conditions
           </DropdownItem>
 

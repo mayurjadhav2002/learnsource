@@ -8,7 +8,6 @@ import Nav from './(components)/Navbar/page'
 
 import 'vuesax/dist/vuesax.css'
 import Footer from './(components)/footer/footer'
-import { UserContextProvider } from './auth/userContext/userContext'  // Import your UserSessionProvider
 import Preloader from './(components)/(more)/Loaders/Preloader'
 
 
@@ -31,21 +30,19 @@ export default function RootLayout({
         <title>Student Resources | LearnSource</title>
       </head>
       <body>
-        <NextUIProvider>
           {loading ? (
-            <UserContextProvider>
+        <NextUIProvider>
 
               <Nav />
 
               {children}
               <Footer />
-            </UserContextProvider>
+        </NextUIProvider>
           ) :
             (
               <Preloader />
             )
           }
-        </NextUIProvider>
       </body>
 
     </html>

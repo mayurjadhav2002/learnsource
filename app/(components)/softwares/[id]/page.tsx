@@ -6,7 +6,7 @@ import moment from 'moment';
 import Loading from '@/app/loading';
 import Howto from './Howto';
 import Ads from '../../(more)/Ads/Ads';
-export default function page({ params }: { params: any }) {
+export default function Page({ params }: { params: any }) {
 
 
 

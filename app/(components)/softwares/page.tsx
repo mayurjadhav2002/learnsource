@@ -9,7 +9,7 @@ import Loading from '@/app/loading'
 const fetcher = (url: URL) => fetch(url, {method:'get'}).then((res) => res.json()).then((json)=>json.data);
 
 
-function page() {
+function Page() {
    const [pageIndex, setPageIndex] = useState(1)
    const apiUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/software/?page=${pageIndex}`;
   
@@ -42,4 +42,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
