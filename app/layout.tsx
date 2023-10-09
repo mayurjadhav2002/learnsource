@@ -1,4 +1,5 @@
 'use client'
+import { useEffect, useState } from 'react'
 
 import { NextUIProvider } from '@nextui-org/react'
 import './globals.css'
@@ -8,9 +9,7 @@ import Nav from './(components)/Navbar/page'
 import 'vuesax/dist/vuesax.css'
 import Footer from './(components)/footer/footer'
 import { UserContextProvider } from './auth/userContext/userContext'  // Import your UserSessionProvider
-import { useEffect } from 'react'
-import AOS from 'aos'
-import 'aos/dist/aos.css';
+import Preloader from './(components)/(more)/Loaders/Preloader'
 
 
 export default function RootLayout({
@@ -18,31 +17,37 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
-})
- {
-  useEffect(() => {
-    AOS.init()
-}, [])
+}) {
+  const [loading, setLoading] = useState(false);
+
+useEffect(() => {
+  setLoading(true);
+}, []);
   return (
 
     <html lang="en">
       <head>
 
-        <title>Student Resources | QbyteSpace</title>
+        <title>Student Resources | LearnSource</title>
       </head>
       <body>
-      <NextUIProvider>
-      <UserContextProvider>
+        <NextUIProvider>
+        {loading ? (
+          <UserContextProvider>
 
-      <Nav />
+            <Nav />
 
             {children}
-       <Footer />
-       </UserContextProvider>
-
-      </NextUIProvider>
+            <Footer />
+          </UserContextProvider>
+        ):
+        (
+          <Preloader/>
+        )
+        }
+        </NextUIProvider>
       </body>
-  
+
     </html>
   )
 } 

@@ -1,7 +1,6 @@
 import React from 'react'
 import Hero from './Landing/Hero'
 import Deals from './Landing/Deals'
-import Abc from './Landing/Abc'
 import Features from './Landing/Feature'
 import Companies from './Landing/Companies'
 function page() {
