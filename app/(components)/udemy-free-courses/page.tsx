@@ -1,13 +1,13 @@
 "use client"
 import React from 'react'
 import UdemyCard from './udemycards'
-import useSWRImmutable from 'swr/immutable'
+import useSWR from 'swr/immutable'
 import Loading from '@/app/loading';
  
 const fetcher = (url: RequestInfo | URL) => fetch(url).then((res) => res.json());
  
 function page() {
-    const { data, error } = useSWRImmutable("https://flask-udemy-coupon-code.mayurjadhav.repl.co/", fetcher, { revalidateOnFocus: false }    )
+    const { data, error } = useSWR("https://flask-udemy-coupon-code.mayurjadhav.repl.co/", fetcher, { revalidateOnFocus: false }    )
  
     if (error) return <div>Failed to load</div>
     if (!data) return <div className='text-center relative h-72'> <Loading/> </div>

@@ -58,7 +58,7 @@ export default function Ads() {
     <Accordion className='mx-auto w-full'>
 
       {FAQ.map((faq, index)=>
-      <Accordion.Panel>
+      <Accordion.Panel key={index}>
         <Accordion.Title className='text-sm text-bold py-1'>
           <p>
 

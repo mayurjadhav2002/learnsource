@@ -52,7 +52,7 @@ function Abc() {
       <section className="bg-gray-100 py-16">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-semibold mb-8">Contact Us</h2>
-          <p className="text-lg mb-4">Have questions or need assistance? Feel free to reach out to us at [Insert Contact Email Address]. We're here to help!</p>
+          <p className="text-lg mb-4">Have questions or need assistance? Feel free to reach out to us at [Insert Contact Email Address]. We{"'"}re here to help!</p>
           <button className="bg-blue-500 text-white hover:bg-blue-600 py-2 px-6 rounded-full font-semibold transition duration-300 ease-in-out">Contact Us</button>
         </div>
       </section></div>

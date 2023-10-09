@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import  { useUserContext } from './userContext/userContext';
  './userContext/userContext';
 function Login() {
@@ -104,7 +104,7 @@ function Login() {
                     </div>
                     <div className="mt-8">
                         <button role="button" onClick={handleSubmit} aria-label="create my account" className="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-4 w-full">
-                            Let's go 🚀
+                            Let&apos;s go 🚀
                         </button>
                     </div>
                 </div>

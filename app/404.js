@@ -9,7 +9,7 @@ export default function Custom404() {
         </div>
       </div>
       <h1 className="mt-5 text-[36px] font-bold text-slate-800 lg:text-[50px]">404 - Page not found</h1>
-      <p className="text-slate-600 mt-5 lg:text-lg">The page you are looking for doesn't exist or <br />has been removed.</p>
+      <p className="text-slate-600 mt-5 lg:text-lg">The page you are looking for doesn{"'"}t exist or <br />has been removed.</p>
     </div>
   </div>
     </>

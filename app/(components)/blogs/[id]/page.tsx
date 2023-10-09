@@ -2,18 +2,14 @@
 import { Image } from '@nextui-org/react'
 import React, { useEffect, useState } from 'react'
 import './style.css'
-import Head from 'next/head';
 import Loading from '@/app/loading';
 
 export default function page({ params }: { params: any }) {
 
-  const [blog, setBlog] = useState();
+  const [blog, setBlog] = React.useState();
 
-  useEffect(() => {
+  React.useEffect(() => {
     const fetchData = async () => {
-
-
-
       try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blog/blog_by_id?id=${params.id}`, { next: { revalidate: 3600 } });
         const newData = await response.json();
