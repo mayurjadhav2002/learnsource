@@ -5,7 +5,7 @@ import './style.css'
 import moment from 'moment';
 import Loading from '@/app/loading';
 import Howto from './Howto';
-
+import Ads from '../../(more)/Ads/Ads';
 export default function page({ params }: { params: any }) {
 
 
@@ -74,7 +74,7 @@ export default function page({ params }: { params: any }) {
 
                                         </div>
                                         <figure>
-                                            <img src={data.image} className='h-auto min-h-44 max-h-72 mx-auto py-1'
+                                            <img src={data.image} className='h-auto object-contain max-h-72 mx-auto py-1'
 
                                                 alt={data.title} loading='lazy' />
                                             <figcaption>{data.title}</figcaption>
@@ -163,8 +163,8 @@ export default function page({ params }: { params: any }) {
                     </div>
 
 
-                    <div className="col-span-2 border-l-2 align-center justify-center ">
-
+                    <div className="col-span-2 border-l-2 align-center p-5 justify-center ">
+<Ads/>
                     </div>
 
                 </div>

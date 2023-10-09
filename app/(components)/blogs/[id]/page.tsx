@@ -1,7 +1,9 @@
 'use client'
 import { Image } from '@nextui-org/react'
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './style.css'
+import Head from 'next/head';
+import Loading from '@/app/loading';
 
 export default function page({ params }: { params: any }) {
 
@@ -9,33 +11,34 @@ export default function page({ params }: { params: any }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      // const cacheData = localStorage.getItem(params.id)
-      // if (cacheData) {
-      //   const data = JSON.parse(cacheData);
-      //   setBlog(data)
-      // } else {
 
 
-        try {
-          const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blog/blog_by_id?id=${params.id}`);
-          const newData = await response.json();
-          setBlog(newData.blog);
-          localStorage.setItem(params.id, JSON.stringify(newData.blog));
-        } catch (error) {
-          throw new Error("error")
-        }
-      // }
 
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blog/blog_by_id?id=${params.id}`, { next: { revalidate: 3600 } });
+        const newData = await response.json();
+        setBlog(newData.blog);
+       
+      } catch (error) {
+        throw new Error("error")
+      }
+     
 
     };
     fetchData();
   }, []);
 
-  console.log(blog)
 
-  return (
-    <>
-      {blog ?
+
+
+  if (!blog) { return <Loading /> }
+  else {
+
+    return (
+      <>
+
+    
+     
         <div className='mt-10 col-span-2 w-full border-r-0 lg:border-r-2 text-center'>
 
 
@@ -58,16 +61,23 @@ export default function page({ params }: { params: any }) {
                     </div>
                   </div>
                 </div>
+                <div className='flex items-center'>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-eye mr-2" viewBox="0 0 16 16">
+                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                  </svg>
+                  <span className='text-sm text-gray-900'>{blog.views} Views</span>
+                </div>
               </div>
               <figure>
-                <Image
+                <img
 
                   src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/static/Blogs/thumbnail/${blog.thumbnail}`}
                   loading='lazy'
                   alt='Image could not load Properly'
                   className='w-full max-h-max py-1'
 
-                />  <figcaption>Fig.1 - {blog.title}</figcaption>
+                />  <figcaption className='text-gray-700 font-mono font-light'>Fig.1 - {blog.title}</figcaption>
               </figure>
 
               <div dangerouslySetInnerHTML={{ __html: blog.content }} />
@@ -78,39 +88,12 @@ export default function page({ params }: { params: any }) {
             <hr className='mt-10 mb-3' />
 
 
-            <div className="flex w-full items-center justify-between">
+            {/* <div className="flex w-full items-center justify-between">
 
-              <div className='flex items-center'>
-                <div>
+            
 
-
-                  <button className='hover:bg-gray-50 flex items-center px-5 py-2 rounded-md cursor-pointer'  >
-
-
-                    <span className='flex items-center gap-2'>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="blue" d="M4 14h4v7a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-7h4a1.001 1.001 0 0 0 .781-1.625l-8-10c-.381-.475-1.181-.475-1.562 0l-8 10A1.001 1.001 0 0 0 4 14z" /></svg>
-
-                    </span>
-
-                    <span className='flex items-center gap-2'>
-                      <svg xmlns="http://www.w3.org/2000/svg"
-
-                        width="24" height="24" viewBox="0 0 24 24"><path fill="blue" d="M12.781 2.375c-.381-.475-1.181-.475-1.562 0l-8 10A1.001 1.001 0 0 0 4 14h4v7a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-7h4a1.001 1.001 0 0 0 .781-1.625l-8-10zM15 12h-1v8h-4v-8H6.081L12 4.601L17.919 12H15z" /></svg>
-
-
-
-                    </span>
-
-
-                  </button>
-
-
-                </div>
-
-
-              </div>
-
-              <div className='flex items-center'>
+            Views Page
+                          <div className='flex items-center'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-eye mr-2" viewBox="0 0 16 16">
                   <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
                   <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
@@ -119,7 +102,7 @@ export default function page({ params }: { params: any }) {
               </div>
 
 
-            </div>
+            </div> */}
 
           </div>
 
@@ -128,9 +111,11 @@ export default function page({ params }: { params: any }) {
 
 
         </div>
-        : <>Loading .... </>}
-    </>
-  )
+     
+      </>
+    )
+
+  }
 }
 
 

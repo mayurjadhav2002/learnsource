@@ -34,3 +34,13 @@
     figure {
         @apply py-2;
     }
+    img{
+        width: 100%;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: 0.2s ease-in-out;
+    }
+    img:hover{
+        transform: scale(102%);
+
+    }

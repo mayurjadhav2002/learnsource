@@ -1,40 +1,39 @@
 'use client'
+import Loading from "@/app/loading";
 import { Card, CardBody, Avatar, Image } from "@nextui-org/react";
 import Link from "next/link";
 import React from 'react'
-interface Data{
-    map(arg0: (data: Data, index: Number) => React.JSX.Element): unknown;
-    _id:String,
-    created_by: String,
-    title: String,
-    description: String,
-}
-function Blog({data}:{data:Data}) {
+
+function Blog({data}) {
+    if (!data) return <div className='text-center relative h-72'><Loading /></div>
 
     return (
         <>
-        {data.map((data:Data, index)=> 
-            <Card  key={data._id[1]} as={Link} href={`blogs/${data._id}`}
+        {data.map((data: { _id: any; written_by: { image: any; name: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; short_bio: any; }; title: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; description: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; }, index: Nu)=> 
+            <Card  key={index} as={Link} href={`blogs/${data._id}`}
                 className="border-none my-5 mx-auto dark:bg-default-100/50 max-w-3xl dark:bg-gray-200"
                 shadow="sm">
                 <CardBody>
                     <div className="grid grid-cols-2 lg:grid-cols-6 gap-1 items-center ">
                         <div className="col-span-4">
                             <div className="flex gap-2">
-                                <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" />
+                                <Avatar src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/static/avatar/${data.written_by.image}`} />
                                 <div className="flex flex-col items-start justify-center">
-                                    <span className="text-small font-semibold leading-none text-default-600">{data.created_by}</span>
-                                    <span className="text-small tracking-tight text-default-400">@zoeylang</span>
+                                    <span className="text-small font-semibold leading-none text-default-600">{data.written_by.name}</span>
+                                    <span className="text-small tracking-tight text-default-400">{data.written_by.short_bio || 'user'}</span>
                                 </div>
                             </div>
                             <div className="pt-2">
                                 <h1 className="text-xl font-bold leading-6">{data.title}</h1>
-                                <p className="text-sm mt-1">{data.description}</p>
+                                <img src="https://img-c.udemycdn.com/course/240x135/4789870_53df_2.jpg"
+                                 className="object-cover mx-auto my-2 w-3/4  rounded-md lg:hidden"
+                            />
+                                <p className="text-[17px] leading-6 line-clamp-3 mt-1">{data.description}</p>
                             </div>
                         </div>
                         <div className="col-span-3 mx-auto lg:mt-0 mt-4 lg:col-span-2">
                             <Image src="https://img-c.udemycdn.com/course/240x135/4789870_53df_2.jpg"
-                            className="object-cover mx-auto"
+                            className="object-cover mx-auto hidden lg:block xl:block "
                             />
                         </div>
                     </div>

@@ -1,5 +1,4 @@
 import React from 'react'
-import Logo from "../../Assets/Images/Logo/logo.png"
 import Link from 'next/link'
 function Footer() {
   return (
@@ -19,7 +18,9 @@ function Footer() {
               className="text-lg font-bold tracking-tighter  mx-auto
                transition duration-500 ease-in-out transform tracking-relaxed lg:pr-8"
             >
-          <h1 className="text-3xl"> <span className="text-blue-600 text-4xl">Q</span><span className="font-light">Bytȅ</span><span className="font-thin">Space</span></h1>
+          <h1 className="text-3xl"> 
+          <span className="text-blue-600">L</span><span className="font-light">earnS</span><span className="font-thin">ource</span>
+          </h1>
              
            </Link>
            
