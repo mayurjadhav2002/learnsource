@@ -34,7 +34,7 @@ function Preloader() {
   </div>
 </div>
    
-   <div className='text-4xl font-bold'>
+   <div className='text-4xl text-center font-bold'>
     Wait While we load bunch for you
    </div>
     </div>
