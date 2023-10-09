@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { Key } from 'react'
 import { Card, CardBody, Image } from "@nextui-org/react";
 import Link from 'next/link';
 interface SoftwareCards {
   map(arg0: (data: SoftwareCards, index: Number) => React.JSX.Element): unknown;
 
-  _id: String,
+  _id: Key,
   title: String,
   views: Number,
   url: URL
@@ -21,7 +21,7 @@ function SoftwareCards({ data }: { data: SoftwareCards }) {
 
     <>
       {data.map((data: SoftwareCards) =>
-        <Card className='cursor-pointer hover:scale-105' as={Link} href={`softwares/${data._id}`}>
+        <Card className='cursor-pointer hover:scale-105' key={data._id} as={Link} href={`softwares/${data._id}`}>
           <CardBody>
 <div className='mx-auto w-auto'>
 <Image

@@ -20,9 +20,9 @@ export default function RootLayout({
 }) {
   const [loading, setLoading] = useState(false);
 
-useEffect(() => {
-  setLoading(true);
-}, []);
+  useEffect(() => {
+    setLoading(true);
+  }, []);
   return (
 
     <html lang="en">
@@ -32,19 +32,19 @@ useEffect(() => {
       </head>
       <body>
         <NextUIProvider>
-        {loading ? (
-          <UserContextProvider>
+          {loading ? (
+            <UserContextProvider>
 
-            <Nav />
+              <Nav />
 
-            {children}
-            <Footer />
-          </UserContextProvider>
-        ):
-        (
-          <Preloader/>
-        )
-        }
+              {children}
+              <Footer />
+            </UserContextProvider>
+          ) :
+            (
+              <Preloader />
+            )
+          }
         </NextUIProvider>
       </body>
 
