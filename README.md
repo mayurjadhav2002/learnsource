@@ -2,7 +2,10 @@
 
 Learnsource is a dedicated platform that empowers learners and aspiring professionals by providing access to premium software, free courses, web scraping resources, and essential educational tools. Our mission is to bridge educational gaps and help you unlock your full potential.
 
-
+## Note
+if you are visiting demo website at https://learnsource1.netlify.app/ please be patient as the backend is deployed on render. So it takes time to reboot the Virtual environment on Render. Once the backend is ready you'll able to see the demo site seamlessly.
+\
+If you want to check the uptime of the backend please visit - [Backend Site](https://qbytespace-backend.onrender.com/software)
 ## Installation
 * Clone the repo
 ```bash
