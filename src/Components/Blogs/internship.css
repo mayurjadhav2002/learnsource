@@ -1,0 +1,12 @@
+
+.internship-blog{
+    background: hsla(20, 100%, 98%, 1);
+
+background: linear-gradient(180deg, rgb(245, 235, 229) 0%, rgb(232, 244, 255) 100%);
+
+background: -moz-linear-gradient(180deg, rgb(255, 243, 235) 0%, rgb(234, 249, 255) 100%);
+
+background: -webkit-linear-gradient(1800deg, rgb(255, 246, 241) 0%, rgb(237, 249, 255) 100%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFF7F3", endColorstr="#F1FAFF", GradientType=1 );
+}

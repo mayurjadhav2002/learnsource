@@ -1,0 +1,56 @@
+.q-btn{
+    background: linear-gradient(45deg, #b066ff, #4141fa);
+}
+.q-btn:hover{
+    animation-name: q-btn-animate;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+.q-btn-primary{
+    background-color: #8cffba;
+}
+.q-btn-primary:hover{
+    background-color: #1ee26c;
+}
+.q-btn-secondary{
+    background-color: #8cffba;
+}
+.q-btn-secondary:hover{
+    background-color: #1ee26c;
+}
+.q-btn-danger{
+    background-color: #c26c4a;
+}
+.q-btn-danger:hover{
+    background-color: #c95223;
+}
+.q-rounded-lt{
+    border-top-left-radius: 10rem;
+}
+
+
+
+
+  
+
+
+@keyframes q-btn-animate {
+    0% {
+        background: linear-gradient(45deg, #b066ff, #4141fa)
+
+    }
+    25% {
+        background: linear-gradient(90deg, #4883aa, #3e3eaa)
+
+    }
+    50% {
+        background: linear-gradient(45deg, #0953f3, #795fc0)
+
+    }
+    75% {
+        background: linear-gradient(45deg, #345d83, #943765)
+
+    }
+    100%{
+        background: linear-gradient(45deg, #6a84bb, #0f20c0);    }
+}
